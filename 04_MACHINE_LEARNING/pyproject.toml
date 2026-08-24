@@ -7,7 +7,9 @@ authors = [
     { name = "yonggyo1125", email = "yonggyo00@kakao.com" }
 ]
 requires-python = ">=3.13"
-dependencies = []
+dependencies = [
+    "numpy>=2.5.2",
+]
 
 [project.scripts]
 04-machine-learning = "04_machine_learning:main"
