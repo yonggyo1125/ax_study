@@ -1,0 +1,23 @@
+[project]
+name = "10-llm-prompt-engineering"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "yonggyo1981", email = "yonggyo00@kakao.com" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "ipykernel>=7.3.0",
+    "langchain>=1.4.0",
+    "langchain-core>=1.6.2",
+    "langchain-ollama>=1.1.0",
+    "python-dotenv>=1.2.3",
+]
+
+[project.scripts]
+10-llm-prompt-engineering = "10_llm_prompt_engineering:main"
+
+[build-system]
+requires = ["uv_build>=0.12.2,<0.13.0"]
+build-backend = "uv_build"
