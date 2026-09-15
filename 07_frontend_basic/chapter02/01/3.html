@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        ol span {
+            background: orange;
+        }
+        
+        li div > span {
+            background: skyblue;
+        }
+    </style>
+    <ul>
+        <li>메뉴1</li>
+        <li>메뉴2</li>
+        <li>
+            <span>메뉴3</span>
+        </li>
+        <li>메뉴4
+            <ol>
+                <li>
+                    <div>
+                        <span>서브 메뉴1</span>      
+                    </div>
+                </li>
+                <li>
+                    <span>서브 메뉴2</span>
+                </li>
+                <li>서브 메뉴3</li>
+            </ol>
+        </li>
+        <li>메뉴5</li>
+    </ul>
+</body>
+</html>
