@@ -6,20 +6,37 @@
     </head>
     <body>
         <h1>회원 가입</h1>
-        <form>
-            이메일 <input type="text"> <br>
-            비밀번호 <input type="password"> <br>
-            비밀번호 확인 <input type="password"> <br>
-            회원이름 <input type="text"> <br>
+        <form method="POST" action="sign_up.html">
+            이메일 <input type="text" name="email" value="user01@test.org" required> <br>
+            비밀번호 <input type="password" name="password" required> <br>
+            비밀번호 확인 <input type="password" name="confirm_password" required> <br>
+            회원이름 <input type="text" name="username" required> <br>
             성별 
-                <input type="radio" name="gender">여성
-                <input type="radio" name="gender">남성<br>
+                <label>
+                    <input type="radio" name="gender" value="FEMALE" checked>여성
+                </label>
+                
+                <label>
+                    <input type="radio" name="gender" value="MALE">남성
+                </label>
+                <br>
             취미 
-                <input type="checkbox" name="hobby">파이썬 공부
-                <input type="checkbox" name="hobby">머신러닝 공부
-                <input type="checkbox" name="hobby">독서<br>
+                <input type="checkbox" id='hobby_python' name="hobby" value="python">
+                <label for="hobby_python">파이썬 공부</label>
+
+                
+                <input type="checkbox" id="hobby_machine" name="hobby" value="machine">
+                <label for="hobby_machine">머신러닝 공부</label>
+
+
+                <input type="checkbox" id="hobby_reading" name="hobby" value="reading">
+                <label for="hobby_reading">독서</label>
+                <br>
             
-            <input type="submit">
+            자기소개 <textarea name="introduction" rows="5" cols="100" placeholder="2줄 이상 입력하세요..."></textarea>
+
+            <!--<input type="submit" value="회원가입">-->
+            <button type="submit">회원가입</button>
         </form>
     </body>
 </html>
