@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        .box {
+            width: 150px;
+            height: 150px;
+            background: orange;
+            margin: 100px;
+        }
+
+        .box:nth-of-type(2) {
+            background: blue;
+        }
+
+        .box:nth-of-type(3) {
+            background: green;
+        }
+
+        .box:nth-of-type(4) {
+            background: red;
+        }
+    </style>
+
+    <div class="box">A</div>
+    <div class="box">B</div>
+
+    <span class="box">C</span>
+    <span class="box">D</span>
+</body>
+</html>
