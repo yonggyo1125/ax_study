@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        li:not(.menu5) {
+            background: orange;
+        }
+        :is(ul,ol) a {
+            color: green;
+        }
+    </style>
+    <ul>
+        <li>메뉴1</li>
+        <li>메뉴2</li>
+        <li>메뉴3</li>
+        <li>메뉴4</li>
+        <li class="menu5">메뉴5</li>
+        <li>메뉴6</li>
+        <li>메뉴7</li>
+        <li>메뉴8</li>
+        <li>메뉴9</li>
+        <li>메뉴10</li>
+        <li><a>메뉴11</a></li>
+    </ul>
+    <ol>
+        <li>메뉴1</li>
+        <li><a>메뉴2</a></li>
+    </ol>
+</body>
+</html>
