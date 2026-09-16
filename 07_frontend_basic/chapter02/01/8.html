@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        .box {
+            width: 150px;
+            height: 150px;
+            background: orange;
+            transition: all 0.5s;
+        }
+
+        .box:hover {
+            width: 300px;
+            height: 300px;
+            rotate: 270deg;
+        }
+
+        .text:focus {
+            background: yellow;
+        }
+
+        .tab-group {
+            width: 400px;
+            display: flex;
+            align-items: center;
+        }
+
+        .tab-group input[type='radio'] {
+            display: none;
+        }
+
+        .tab-group label {
+            border: 1px solid #ccc;
+            padding: 20px 15px;
+            margin: 0 5px;
+        }
+
+        .tab-group input[type='radio']:checked+label {
+            border-color: #000;
+            background: #000;
+            color: #fff;
+        }
+    </style>
+    <div class="box"></div>
+    <input type="text" class="text">
+    <br>
+    <br>
+    <div class="tab-group">
+        <input type="radio" name="tab" value="menu1" id="tab-1">
+        <label for="tab-1">메뉴1</label>
+        
+        <input type="radio" name="tab" value="menu2" id="tab-2">
+        <label for="tab-2">메뉴2</label>
+
+        <input type="radio" name="tab" value="menu3" id="tab-3">
+        <label for="tab-3">메뉴3</label>
+    </div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        ul::before {
+            content: '첫번째';
+        }
+
+        ul::after {
+            content: '';
+        }
+
+        textarea::placeholder {
+            color: red;
+        }
+
+        .text::selection {
+            background: yellow;
+        }
+    </style>
+    <ul>
+        <li>메뉴1</li>
+        <li>메뉴2</li>
+        <li>메뉴3</li>
+    </ul>
+
+    <textarea placeholder="자기소개를 입력하세요..." rows="5" cols="50"></textarea>
+
+    <div class="text">
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsum aliquid sunt in vel sequi voluptate minima, ex iure, consectetur explicabo dignissimos eum, voluptatem architecto blanditiis! Unde sequi rerum tempora suscipit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid libero minima nihil asperiores molestiae autem, neque tempora maiores incidunt sed natus, accusantium nesciunt non totam voluptatibus deleniti quod. Obcaecati, maiores.
+    </div>
+</body>
+</html>
