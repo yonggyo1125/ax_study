@@ -40,46 +40,72 @@
 
         .flex1 {
             display: flex;
+            /* justify-content: flex-start; */
         }
 
         .flex2 {
             display: flex;
-            flex-direction: row-reverse;
+            justify-content: flex-end;
         }
 
         .flex3 {
             display: flex;
-            flex-direction: column;
+            justify-content: center;
         }
-
+        
         .flex4 {
             display: flex;
-            flex-direction: column-reverse;
+            justify-content: space-between;
         }
+
+        .flex5 {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .flex6 {
+            display: flex;
+            justify-content: space-evenly;
+        }
+    
     </style>
-    <h3>flex-direction: row (좌 -> 우)</h3>
+    <h3>justify-content: flex-start(기본값)</h3>
     <ul class="flex1">
         <li>메뉴1</li>
         <li>메뉴2</li>
         <li>메뉴3</li>
     </ul>
 
-    <h3>flex-direction: row-reverse (우 -> 좌)</h3>
+    <h3>justify-content: flex-end</h3>
     <ul class="flex2">
         <li>메뉴1</li>
         <li>메뉴2</li>
         <li>메뉴3</li>
     </ul>
 
-    <h3>flex-direction: column (위 -> 아래)</h3>
+    <h3>justify-content: center</h3>
     <ul class="flex3">
         <li>메뉴1</li>
         <li>메뉴2</li>
         <li>메뉴3</li>
     </ul>
 
-    <h3>flex-direction: column-reverse (아래 -> 위)</h3>
+    <h3>justify-content: space-between</h3>
     <ul class="flex4">
+        <li>메뉴1</li>
+        <li>메뉴2</li>
+        <li>메뉴3</li>
+    </ul>
+
+    <h3>justify-content: space-around</h3>
+    <ul class="flex5">
+        <li>메뉴1</li>
+        <li>메뉴2</li>
+        <li>메뉴3</li>
+    </ul>
+
+    <h3>justify-content: space-evenly</h3>
+    <ul class="flex6">
         <li>메뉴1</li>
         <li>메뉴2</li>
         <li>메뉴3</li>

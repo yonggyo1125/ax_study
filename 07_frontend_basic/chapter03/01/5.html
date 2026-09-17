@@ -20,21 +20,25 @@
             padding: 0;
             border: 1px solid #000;
             height: 100px;
+            flex-wrap: wrap;
         }
 
         li {
-            min-width: 100px;
+            /* min-width: 100px; */
+            /* width: 0; */
+            flex-basis: 200px;
+            flex-shrink: 0;
         }
 
-        li:nth-of-type(1) {
+        li:nth-of-type(3n+1) {
             background: red;
         }
 
-        li:nth-of-type(2) {
+        li:nth-of-type(3n+2) {
             background: blue;
         }
 
-        li:nth-of-type(3) {
+        li:nth-of-type(3n) {
             background: green;
         }
 
@@ -42,47 +46,27 @@
             display: flex;
         }
 
-        .flex2 {
-            display: flex;
-            flex-direction: row-reverse;
-        }
-
-        .flex3 {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .flex4 {
-            display: flex;
-            flex-direction: column-reverse;
-        }
+    
     </style>
-    <h3>flex-direction: row (좌 -> 우)</h3>
+    <h3></h3>
     <ul class="flex1">
         <li>메뉴1</li>
         <li>메뉴2</li>
         <li>메뉴3</li>
-    </ul>
-
-    <h3>flex-direction: row-reverse (우 -> 좌)</h3>
-    <ul class="flex2">
+        <li>메뉴1</li>
+        <li>메뉴2</li>
+        <li>메뉴3</li>
+        <li>메뉴1</li>
+        <li>메뉴2</li>
+        <li>메뉴3</li>
+        <li>메뉴1</li>
+        <li>메뉴2</li>
+        <li>메뉴3</li>
         <li>메뉴1</li>
         <li>메뉴2</li>
         <li>메뉴3</li>
     </ul>
 
-    <h3>flex-direction: column (위 -> 아래)</h3>
-    <ul class="flex3">
-        <li>메뉴1</li>
-        <li>메뉴2</li>
-        <li>메뉴3</li>
-    </ul>
 
-    <h3>flex-direction: column-reverse (아래 -> 위)</h3>
-    <ul class="flex4">
-        <li>메뉴1</li>
-        <li>메뉴2</li>
-        <li>메뉴3</li>
-    </ul>
 </body>
 </html>
