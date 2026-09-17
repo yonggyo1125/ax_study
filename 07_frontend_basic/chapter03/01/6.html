@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        .box1 {
+            display: grid;
+            /* grid-template-columns: 150px 150px 300px; */
+            /* grid-template-columns: 150px 1fr 2fr; */
+            /* grid-template-columns: 1fr 1fr 1fr; */
+            grid-template-columns: repeat(3, 1fr);
+            width: 500px;
+            color: #fff;
+            font-size: 20px;
+            /* row-gap: 20px;
+            column-gap: 10px; */
+            gap: 20px 10px;
+            /* place-items: start; */
+            place-items: center;
+        }
+
+        .card {
+            height: 100px;
+            background: skyblue;
+        }
+
+        .card span {
+            background: red;
+            color: #fff;
+        }
+    </style>
+
+    <div class="box1">
+        <div class="card"><span>A</span></div>
+        <div class="card"><span>B</span></div>
+        <div class="card"><span>C</span></div>
+
+        <div class="card"><span>D</span></div>
+        <div class="card"><span>E</span></div>
+        <div class="card"><span>F</span></div>
+    </div>
+</body>
+</html>
