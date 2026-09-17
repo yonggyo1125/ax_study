@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+
+/* 초기화 */
+* {
+    outline: none;
+}
+
+body {
+    margin: 0;
+}
+
+ul, ol, dl, dt, dd {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    border: 0;
+}
+
+/* 전역 변수 선언하는 위치 */
+:root {
+    --primary-font-family: "Noto Sans KR", sans-serif;
+    --primary-font-size: 13px;
+    --primary-font-color: #313131;
+    --primary-layout-size: 727px;
+    --primary-layout-min-size: 320px;
+}
+
+/* 공통 스타일 */
+* {
+    box-sizing: border-box;
+    font-family: var(--primary-font-family);
+}
+
+html {
+    font-size: var(--primary-font-size);
+    background: #f8f8f8;
+}
+
+body {
+    color: var(--primary-font-color);
+    max-width: var(--primary-layout-size);
+    min-width: var(--primary-layout-min-size);
+    min-height: 700px;
+    background: #fff;
+    margin: 0 auto;
+}
+
+/* 상단 로고, 메뉴 영역 S */
+header {
+    display: flex;
+    justify-content: space-between;
+    height: 66px;
+    border-bottom: 1px solid #ccc;
+    align-items: center;
+}
+header > section {
+    flex-basis: 20%;
+    flex-shrink: 0;
+}
+
+header > section.right {
+   display: flex;
+   justify-content: flex-end;
+}
+/* 상단 로고, 메뉴 영역 E */
