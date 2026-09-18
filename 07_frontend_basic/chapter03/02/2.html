@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .box-group {
+            display: grid;
+            grid-template-columns: 1fr;
+            padding: 20px;
+            row-gap: 15px;
+        }
+
+        .box-group .box {
+            background: skyblue;
+            height: 250px;
+            border-radius: 15px;
+        }
+        /* 태블릿 사이즈 브레이크 포인트 */
+        @media screen and (min-width: 768px) and (max-width: 1023px) {
+            .box-group {
+                grid-template-columns: repeat(2, 1fr);
+                column-gap: 15px;
+            }
+        }
+
+        @media screen and (min-width: 1024px) {
+            .box-group {
+                grid-template-columns: repeat(3, 1fr);
+                column-gap: 15px;
+            }
+        }
+
+        /* 프린트할때 적용되는 CSS */
+        @media print {
+            body {
+                background: black;
+            }
+        }
+    </style>
+    <div class="box-group">
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+    </div>
+</body>
+</html>
