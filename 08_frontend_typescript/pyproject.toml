@@ -1,0 +1,17 @@
+[project]
+name = "08-frontend-typescript"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "yonggyo1981", email = "yonggyo00@kakao.com" }
+]
+requires-python = ">=3.13"
+dependencies = []
+
+[project.scripts]
+08-frontend-typescript = "08_frontend_typescript:main"
+
+[build-system]
+requires = ["uv_build>=0.12.2,<0.13.0"]
+build-backend = "uv_build"
