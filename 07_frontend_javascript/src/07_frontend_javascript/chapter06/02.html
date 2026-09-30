@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        img {
+            display: block;
+            width: 200px;
+        }
+
+        .photo .image2 {
+            display: none;
+        }
+
+        .photo.swap .image1 {
+            display: none;
+        }
+        .photo.swap .image2 {
+            display: block;
+        }
+    </style>
+    <script>
+        window.addEventListener("DOMContentLoaded", function() {
+            const buttonEl = document.getElementById("swap");
+            console.log("buttonEl", buttonEl);
+            buttonEl.addEventListener("click", function() {
+                const photoEl = document.querySelector(".photo");
+                
+                const classList = photoEl.classList;
+                 console.log("classList", classList);
+                classList.toggle("swap");
+                // console.log("classList", classList);
+                // if (classList.contains("swap")) {
+                //     classList.remove("swap");
+                // } else {
+                //     classList.add("swap");
+                // }
+            });
+        });
+    </script>
+    <div class="photo">
+        <img src="images/1.jpg" class="image1">
+        <img src="images/1_on.png" class="image2">
+    </div>
+    <button type="button" id="swap">이미지 변경</button>
+    
+</body>
+</html>
