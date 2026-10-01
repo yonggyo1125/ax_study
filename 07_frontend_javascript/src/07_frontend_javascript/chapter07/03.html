@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        .box {
+            padding: 150px;
+            background: gray;
+        }
+
+        .box2 {
+            background: orange;
+        }
+
+        .box3 {
+            background: black;
+        }
+    </style>
+    <script>
+        window.addEventListener("DOMContentLoaded", function() {
+            const box1 = document.querySelector(".box1");
+            const box2 = document.querySelector(".box2");
+            const box3 = document.querySelector(".box3");
+
+            box1.addEventListener("click", function(e) {
+                console.log("box1 클릭!");
+            });
+
+            box2.addEventListener("click", function(e) {
+                console.log("box2 클릭!");
+            }, false);
+
+            box3.addEventListener("click", function(e) {
+                console.log("box3 클릭!");
+                console.log(e);
+                //e.stopPropagation(); // 이벤트 전파 차단
+                e.stopImmediatePropagation(); 
+            });
+
+            box1.addEventListener("click", function(e) {
+                console.log("box1 클릭2!");
+            });
+
+            box2.addEventListener("click", function(e) {
+                console.log("box2 클릭2!");
+            }, false);
+
+            box3.addEventListener("click", function(e) {
+                console.log("box3 클릭2!");
+            });
+        });
+    </script>
+    <div class="box box1">
+        <div class="box box2">
+            <div class="box box3"></div>
+        </div>
+    </div>
+</body>
+</html>

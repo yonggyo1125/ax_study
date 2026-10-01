@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        window.addEventListener("DOMContentLoaded", function() {
+            const divEl = document.querySelector("div");
+            divEl.addEventListener("click", function(e) {
+                console.log("this:", this);
+                console.log("currentTarget", e.currentTarget);
+                console.log("target", e.target);
+            });
+        });
+    </script>
+
+    <div>
+        <span>클릭</span>
+    </div>
+</body>
+</html>

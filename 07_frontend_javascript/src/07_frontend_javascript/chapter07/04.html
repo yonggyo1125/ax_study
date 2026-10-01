@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        window.addEventListener("DOMContentLoaded", function() {
+            const el = document.querySelector("a");
+            el.addEventListener("click", function(e) {
+                e.preventDefault(); // 기본동작 방지
+                console.log("기본동작이 차단되었나요?");
+                console.log("this", this);
+            });
+        });
+    </script>
+    <a href="https://naver.com">네이버로 이동</a>
+</body>
+</html>
