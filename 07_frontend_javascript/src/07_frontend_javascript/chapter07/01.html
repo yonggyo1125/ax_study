@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="1.js"></script>
+    <script src="2.js"></script>
+</head>
+<body>
+    <script>
+
+
+        window.addEventListener("DOMContentLoaded", function() {
+            const buttonEl2 = document.getElementById("btn2");
+            buttonEl2.onclick = function() {
+                alert("클릭2 --- 1");
+            };
+
+            buttonEl2.onclick = function() {
+                alert("클릭2 --- 2");
+            };
+        });
+    </script>
+    <button type="button" onclick="alert('메세지!');" id="btn">클릭</button>
+    <button type="button" id="btn2">클릭2</button>
+</body>
+</html>
