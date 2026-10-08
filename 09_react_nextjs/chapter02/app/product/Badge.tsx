@@ -1,18 +1,15 @@
 interface BadgeType {
     theme: string;
-    text: string;
+    children: React.ReactNode;
 }
 
-export default function Badge({ theme, text }: BadgeType): React.JSX.Element {
+export default function Badge({
+    theme,
+    children,
+}: BadgeType): React.JSX.Element {
     return (
-        <span
-            className={
-                theme === 'dark'
-                    ? 'bg-black-50 text-white'
-                    : 'bg-gray-50 text-black'
-            }
-        >
-            {text}
+        <span className={theme === 'dark' ? 'text-black' : 'text-orange'}>
+            {children}
         </span>
     );
 }
