@@ -1,7 +1,7 @@
 import ProductItem from "./ProductItem";
 
 export default function ProductPage(): React.JSX.Element {
-    return <ProductItem item-name="아이폰" item-price={10000} />;
+    return <ProductItem itemName="아이폰" itemPrice={10000} />;
 }
 
 // import { Fragment } from "react";

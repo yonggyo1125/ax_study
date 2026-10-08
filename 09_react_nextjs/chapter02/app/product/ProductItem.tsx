@@ -1,14 +1,19 @@
-export default function ProductItem(props): React.JSX.Element {
-    console.log("props", props);
+interface Product {
+    itemName: string;
+    itemPrice: number;
+}
+
+export default function ProductItem({itemName, itemPrice}: Product): React.JSX.Element {
+    // const { itemName, itemPrice } = props;
     return (
         <>
             <dl>
                 <dt>상품명</dt>
-                <dd></dd>
+                <dd>{itemName}</dd>
             </dl>
             <dl>
                 <dt>판매가</dt>
-                <dd></dd>
+                <dd>{itemPrice}</dd>
             </dl>
         </>
     );
