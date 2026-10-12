@@ -1,6 +1,7 @@
 'use client';
 
 import { ChangeEvent, FormEvent, useState, useCallback } from 'react';
+import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 
@@ -50,6 +51,10 @@ export default function TodoPage(): React.JSX.Element {
         );
     }, []);
 
+    const onRemove = useCallback((id: number) => {
+        setItems((prev) => prev.filter((item) => item.id !== id)); // id와 일치하는 todo 객체는 제외되고 새로운 목록이 생성
+    }, []);
+
     return (
         <div className="m-4">
             <form
@@ -69,9 +74,20 @@ export default function TodoPage(): React.JSX.Element {
                 {items.length === 0 ? (
                     <li>등록된 할일이 없습니다.</li>
                 ) : (
-                    items.map((item) => <TodoItem key={item.id} {...item} onClick={onClick} />)
+                    items.map((item) => (
+                        <TodoItem
+                            key={item.id}
+                            {...item}
+                            onClick={onClick}
+                            onRemove={onRemove}
+                        />
+                    ))
                 )}
             </ul>
+
+            <Link href="/login">로그인(CSR - SPA)</Link>
+            <br />
+            <a href="/login">로그인(SSR - MPA)</a>
         </div>
     );
 }
