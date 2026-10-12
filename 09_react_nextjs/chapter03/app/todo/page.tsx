@@ -1,6 +1,6 @@
 'use client';
 
-import { ChangeEvent, FormEvent, useState } from 'react';
+import { ChangeEvent, FormEvent, useState, useCallback } from 'react';
 import TodoItem from '@/domains/todo/components/TodoItem';
 
 export interface Todo {
@@ -9,25 +9,54 @@ export interface Todo {
     checked?: boolean;
 }
 
+const initialValue: Todo = {
+    title: '',
+    checked: false,
+};
+
 export default function TodoPage(): React.JSX.Element {
-    const [form, setForm] = useState<Todo>({});
+    const [form, setForm] = useState<Todo>(initialValue);
     const [items, setItems] = useState<Todo[]>([]);
 
-    const onChange = (e: ChangeEvent<HTMLInputElement>) => {
-        setForm({...form, title: e.target.value});
-    };
+    // const onChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+    //     setForm({ ...form, title: e.target.value });
+    // }, [form]); // 두번쨰 매개변수 []는 함수가 새롭게 정의되는 기준 값. [] -> 한번 정의되면 다시 생성 X, [form] -> form 객체가 변화면 useCallback에 정의된 함수가 새로 정의, 생성
 
-    const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+    const onChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+        setForm((prev) => ({ ...prev, title: e.target.value }));
+    }, []);
+
+    const onSubmit = useCallback((e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+
+        // setItems(items.concat([{ ...form, id: Date.now() }]));
+        setItems(prev => prev.concat([{...form, id: Date.now()}]));
         
-    };
+        // 등록 완료 이후 값 초기화
+        setForm({ ...initialValue });
+    }, [form]);
+
     return (
         <>
-            <form>
-                <input type="text" name="title" className="border" onChange={onChange} value={form.title} />
+            <form onSubmit={onSubmit}>
+                <input
+                    type="text"
+                    name="title"
+                    className="border"
+                    onChange={onChange}
+                    value={form.title}
+                />
                 <button type="submit" className="border">
                     할일 등록
                 </button>
             </form>
+            <ul>
+                {items.length === 0 ? (
+                    <li>등록된 할일이 없습니다.</li>
+                ) : (
+                    items.map((item) => <TodoItem key={item.id} {...item} />)
+                )}
+            </ul>
         </>
     );
 }
