@@ -2,7 +2,7 @@
 
 import { ChangeEvent, FormEvent, useState, useCallback } from 'react';
 import { Button } from '@/components/ui/button';
-import { Input } from "@/components/ui/input"
+import { Input } from '@/components/ui/input';
 
 import TodoItem from '@/domains/todo/components/TodoItem';
 
@@ -42,9 +42,20 @@ export default function TodoPage(): React.JSX.Element {
         [form],
     );
 
+    const onClick = useCallback((id: number) => {
+        setItems((prev) =>
+            prev.map((item) =>
+                item.id === id ? { ...item, checked: !item.checked } : item,
+            ),
+        );
+    }, []);
+
     return (
-        <>
-            <form onSubmit={onSubmit}>
+        <div className="m-4">
+            <form
+                onSubmit={onSubmit}
+                className="flex mx-auto w-max-[450px] w-full"
+            >
                 <Input
                     type="text"
                     name="title"
@@ -52,17 +63,15 @@ export default function TodoPage(): React.JSX.Element {
                     onChange={onChange}
                     value={form.title}
                 />
-                <Button type="submit">
-                    할일 등록
-                </Button>
+                <Button type="submit">할일 등록</Button>
             </form>
             <ul>
                 {items.length === 0 ? (
                     <li>등록된 할일이 없습니다.</li>
                 ) : (
-                    items.map((item) => <TodoItem key={item.id} {...item} />)
+                    items.map((item) => <TodoItem key={item.id} {...item} onClick={onClick} />)
                 )}
             </ul>
-        </>
+        </div>
     );
 }
