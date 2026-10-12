@@ -1,6 +1,9 @@
 'use client';
 
 import { ChangeEvent, FormEvent, useState, useCallback } from 'react';
+import { Button } from '@/components/ui/button';
+import { Input } from "@/components/ui/input"
+
 import TodoItem from '@/domains/todo/components/TodoItem';
 
 export interface Todo {
@@ -26,29 +29,32 @@ export default function TodoPage(): React.JSX.Element {
         setForm((prev) => ({ ...prev, title: e.target.value }));
     }, []);
 
-    const onSubmit = useCallback((e: FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
+    const onSubmit = useCallback(
+        (e: FormEvent<HTMLFormElement>) => {
+            e.preventDefault();
 
-        // setItems(items.concat([{ ...form, id: Date.now() }]));
-        setItems(prev => prev.concat([{...form, id: Date.now()}]));
-        
-        // 등록 완료 이후 값 초기화
-        setForm({ ...initialValue });
-    }, [form]);
+            // setItems(items.concat([{ ...form, id: Date.now() }]));
+            setItems((prev) => prev.concat([{ ...form, id: Date.now() }]));
+
+            // 등록 완료 이후 값 초기화
+            setForm({ ...initialValue });
+        },
+        [form],
+    );
 
     return (
         <>
             <form onSubmit={onSubmit}>
-                <input
+                <Input
                     type="text"
                     name="title"
                     className="border"
                     onChange={onChange}
                     value={form.title}
                 />
-                <button type="submit" className="border">
+                <Button type="submit">
                     할일 등록
-                </button>
+                </Button>
             </form>
             <ul>
                 {items.length === 0 ? (
