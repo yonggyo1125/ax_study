@@ -24,6 +24,12 @@ export default function SignUpForm(): React.JSX.Element {
                     placeholder="이메일을 입력하세요."
                 />
             </div>
+            {state.errors?.email && (
+                <div className="text-red-200 mb-4">
+                    {state.errors.email}
+                </div>
+            )}
+
             <div className="flex mb-2 items-center">
                 <label className="basis-30">회원명</label>
                 <Input
@@ -32,6 +38,12 @@ export default function SignUpForm(): React.JSX.Element {
                     placeholder="회원명을 입력하세요."
                 />
             </div>
+            {state.errors?.name && (
+                <div className="text-red-200 mb-4">
+                    {state.errors.name}
+                </div>
+            )}
+
             <div className="flex mb-2 items-center">
                 <label className="basis-30">비밀번호</label>
                 <Input
@@ -40,6 +52,12 @@ export default function SignUpForm(): React.JSX.Element {
                     placeholder="비밀번호를 입력하세요."
                 />
             </div>
+            {state.errors?.password && (
+                <div className="text-red-200 mb-4">
+                    {state.errors.password}
+                </div>
+            )}
+
             <div className="flex mb-2 items-center">
                 <label className="basis-30">비밀번호 확인</label>
                 <Input
@@ -48,6 +66,12 @@ export default function SignUpForm(): React.JSX.Element {
                     placeholder="비밀번호를 입력하세요."
                 />
             </div>
+            {state.errors?.passwordConfirm && (
+                <div className="text-red-200 mb-4">
+                    {state.errors.passwordConfirm}
+                </div>
+            )}
+
             <Button type="submit" disabled={isPending}>
                 {isPending ? '처리중...' : '가입하기'}
             </Button>
