@@ -22,7 +22,6 @@ export function validateSignInInput(
     return errors;
 }
 
-
 export function validateSignUpInput(
     input: SignUpInput,
 ): Record<string, string> {
