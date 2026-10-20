@@ -3,6 +3,7 @@
 import { ActionState } from '@/shared/types/action.types';
 import { validateSignUpInput } from '../utils/authValidations';
 import { createServerClient } from '@/shared/lib/supabase';
+import { revalidatePath } from 'next/cache';
 
 export async function signUpAction(
     prevState: ActionState,
@@ -64,6 +65,8 @@ export async function signUpAction(
             message: `회원 프로필 생성에 실패했습니다: ${profileError.message}`,
         };
     }
+
+    revalidatePath('/', 'layout');
 
     return {
         success: true,
