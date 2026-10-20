@@ -1,6 +1,7 @@
 'use client';
 
-import { ChangeEvent, useActionState, useState } from 'react';
+import { ChangeEvent, useActionState, useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { INITIAL_ACTION_STATE } from '@/shared/types/action.types';
 import { Button } from '@/shared/components/ui/button';
 import { Input } from '@/shared/components/ui/input';
@@ -21,6 +22,8 @@ const initialForm: FormType = {
 };
 
 export default function SignUpForm(): React.JSX.Element {
+    const router = useRouter();
+
     const [state, formAction, isPending] = useActionState(
         signUpAction,
         INITIAL_ACTION_STATE,
@@ -31,6 +34,14 @@ export default function SignUpForm(): React.JSX.Element {
     const onChange = (e: ChangeEvent<HTMLInputElement>) => {
         setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
     };
+
+    useEffect(() => {
+        if (state.success) {
+            alert(state.message);
+            router.push('/');
+            router.refresh();
+        }
+    }, [state.success, state.message, router])
 
     return (
         <div>
