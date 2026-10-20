@@ -36,9 +36,7 @@ export default function SignUpForm(): React.JSX.Element {
     };
 
     useEffect(() => {
-        console.log('호출1');
         if (state.success) {
-            console.log('호출2');
             alert(state.message);
             router.replace('/');
             router.refresh();
