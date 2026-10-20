@@ -1,14 +1,16 @@
 'use client';
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useState } from 'react';
 
-type ElementType = HTMLInputElement | HTMLSelectElement
+type ElementType = HTMLInputElement | HTMLSelectElement;
 
-export default function useFormState<T>(initialState: T) {
+export default function useFormState<T>(
+    initialState: T,
+): [T, (e: ChangeEvent<ElementType>) => void] {
     const [form, setForm] = useState(initialState);
 
     const onChange = (e: ChangeEvent<ElementType>) => {
-        setForm(prev => ({...prev, [e.target.name]: e.target.value}));
+        setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
     };
 
-    return [form as T, onChange as (e: ChangeEvent<ElementType>) => void]
+    return [form, onChange];
 }
