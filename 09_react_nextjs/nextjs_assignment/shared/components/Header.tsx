@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { FaSignInAlt, FaUserPlus } from 'react-icons/fa';
 import { getCurrentUser } from '@/domains/auth/queries/getCurrentUser.query';
 import { use } from 'react';
+import SignOutButton from '@/domains/auth/components/SignOutForm';
 
 export default function Header(): React.JSX.Element {
     const user = use(getCurrentUser());
@@ -13,9 +14,7 @@ export default function Header(): React.JSX.Element {
                 {user ? (
                     <>
                         {user.name}님 로그인...
-                        <Button variant="outline" className="cursor-pointer">
-                            로그아웃
-                        </Button>
+                        <SignOutButton />
                     </>
                 ) : (
                     <>
