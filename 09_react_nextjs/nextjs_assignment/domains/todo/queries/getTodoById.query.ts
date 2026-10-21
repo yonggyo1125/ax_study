@@ -7,7 +7,7 @@ import { toTodo } from '../utils/todoConverter';
 
 export async function getTodoById(id: string): Promise<Todo | null> {
     const supabase = createServerClient();
-    const { user } = await getCurrentUser();
+    const user = await getCurrentUser();
 
     if (!user) return null;
 

@@ -13,7 +13,7 @@ export async function addTodoAction(
     const title = (formData.get('title') as string) ?? '';
     const content = (formData.get('content') as string) ?? '';
 
-    const { user } = await getCurrentUser();
+    const user = await getCurrentUser();
     if (!user) {
         return {
             success: false,
@@ -66,7 +66,7 @@ export async function changeTodoStatus(
     id: string,
     status: TodoStatus,
 ): Promise<void> {
-    const { user } = await getCurrentUser();
+    const user = await getCurrentUser();
     if (!user) {
         throw new Error('인증되지 않은 사용자입니다.');
     }
