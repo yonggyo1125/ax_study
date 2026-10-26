@@ -17,10 +17,19 @@ export default async function BoardPage({
     searchParams: SearchProp;
 }) {
     const pathVars = await params;
+
     console.log('pathVars:', pathVars);
 
     const searchVars = await searchParams;
     console.log('searchVars:', searchVars);
 
-    return <></>;
+    return (
+        <form method="post" action="/board">
+            제목: <input type="text" name="subject" className="border" />
+            <br />
+            내용: <textarea name="content" className="border"></textarea>
+            <br />
+            <button type="submit">작성하기</button>
+        </form>
+    );
 }

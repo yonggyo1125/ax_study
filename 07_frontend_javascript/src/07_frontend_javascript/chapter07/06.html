@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        window.addEventListener("DOMContentLoaded", function() {
+            const fileEl = document.getElementById("file");
+            fileEl.addEventListener("change", function(e) {
+                file = e.target.files[0];
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = function() {
+                    console.log(reader.result);
+                    document.getElementById("show-image").innerHTML = `<img src='${reader.result}' width='300'>`;
+                };
+            });
+        });
+    </script>
+    <input type="file" accept="image/*" id="file" multiple>
+    <div id="show-image"></div>
+</body>
+</html>
