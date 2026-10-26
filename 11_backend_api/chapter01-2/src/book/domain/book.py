@@ -44,3 +44,15 @@ class Book:
             raise ValueError("대출중인 도서가 아닙니다.")
         
         self.status = 'AVAILABLE'
+
+    def to_dict(self) -> dict:
+        """
+        네트워크로 전송할 수 있도록 도메인 객체를 기본 딕셔너리로 가공합니다.
+        """
+        return {
+            "id": self.id,
+            "title": self.title,
+            "author": self.author,
+            "status": self.status,
+            "created_at": self.created_at.isoformat()
+        }
