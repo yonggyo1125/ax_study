@@ -1,5 +1,6 @@
 import logging
-from fastapi import FastAPI, Body, status, HTTPException
+from typing import Optional
+from fastapi import FastAPI, Body, Query, status, HTTPException
 from book.domain.book import Book
 
 logging.basicConfig(level=logging.INFO)
@@ -35,3 +36,10 @@ async def create_book(
         logger.error(f"신규 도서 등록 실패: {str(err)}")
 
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(err))
+
+
+@app.get("/books")
+async def get_all_books(
+    search_keyword: Optional[str] = Query(None, alias="keyword", description="검색 키워드", min_length=2)
+):
+    logger.info(f"search_keyword: {search_keyword}")

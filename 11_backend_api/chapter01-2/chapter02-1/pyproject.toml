@@ -1,0 +1,17 @@
+[project]
+name = "chapter02-1"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "yonggyo1125", email = "yonggyo00@kakao.com" }
+]
+requires-python = ">=3.13"
+dependencies = []
+
+[project.scripts]
+chapter02-1 = "chapter02_1:main"
+
+[build-system]
+requires = ["uv_build>=0.12.2,<0.13.0"]
+build-backend = "uv_build"
