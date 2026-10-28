@@ -1,9 +1,36 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-    </head>
-    <body>
-        <h1>연습1</h1>
-    </body>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <h1>연습1</h1>
+    <p>이름: {{ name }}</p>
+    <p>나이: {{ age }}</p>
+    <p>{{ html_code | safe }}</p>
+    {% if age >= 20 %}
+    <p>성인: 모든 기능 사용 가능</p>
+    {% elif age >= 14 %}
+    <p>청소년: 일부 기능 제한</p>
+    {% else %}
+    <p>어린이: 이용 불가</p>
+    {% endif %}
+    
+    <hr>
+
+    {% do hobbies.append("운동") %}
+    <p>취미({{ hobbies | length }})</p>
+    <ul>
+      {% for hobby in hobbies %}
+      <li>{{ hobby }}</li>
+      {% endfor %}
+    </ul>
+    <hr />
+    {% set global_msg = "반갑습니다! - global" %}
+    <p>전역변수: {{ global_msg }}</p>
+
+    {% with local_score = 95 %}
+    <p>지역변수: {{ local_score }}</p>
+    {% endwith %}
+  </body>
 </html>
