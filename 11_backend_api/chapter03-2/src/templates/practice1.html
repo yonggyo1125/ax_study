@@ -32,5 +32,9 @@
     {% with local_score = 95 %}
     <p>지역변수: {{ local_score }}</p>
     {% endwith %}
+
+    <hr>
+    <p>닉네임: {{ nickname2 | default('익명') }}</p>
+    <p>취미: {{ hobbies | join(',') }}</p>
   </body>
 </html>

@@ -3,11 +3,15 @@ from typing import Dict, Annotated, Optional
 from datetime import date
 from fastapi.responses import JSONResponse
 from fastapi import FastAPI, Path, Query, HTTPException, status, Request
+from order.presentation.routers.v1.router import router as order_router
+
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("app")
 
 app = FastAPI()
+
+app.include_router(order_router)
 
 grocery_database: Dict[int, dict] = {
     1: {
