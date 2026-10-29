@@ -17,11 +17,13 @@ router = APIRouter(prefix="/v1/order", tags=["주문", "태그1"], dependencies=
 
 def test_fun() -> str:
     logger.warning("test_fun() 호출")
-    
+
     return "test_fun"
 
 @router.get("")
-async def get_orders():
+async def get_orders(test: str = Depends(test_fun)):
+    logger.warning(f"Test: {test}")
+    
     pass
 
 @router.get("/{id}")
