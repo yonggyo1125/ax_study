@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Path
 
-router = APIRouter(prefix="/v1/board", tags=["게시판"])
+router = APIRouter(prefix="/v1/board", tags=["게시판", "태그1"])
 
 # GET /v1/board
 @router.get("", description="게시판 설정 조회")
