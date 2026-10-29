@@ -1,6 +1,7 @@
 import os
 import logging
 from fastapi.responses import HTMLResponse
+from fastapi.staticfiles import StaticFiles
 from fastapi import FastAPI, Request, File, UploadFile
 from fastapi.templating import Jinja2Templates
 
@@ -13,6 +14,11 @@ app = FastAPI()
 CURRENT_DIR = os.path.dirname(__file__)
 templates = Jinja2Templates(directory=os.path.join(CURRENT_DIR, "templates"))
 templates.env.add_extension("jinja2.ext.do")
+
+
+# 정적 경로 설정
+app.mount("/static", StaticFiles(directory=os.path.join(CURRENT_DIR, "static")), name="static")
+app.mount("/img", StaticFiles(CURRENT_DIR, "static/img"), name="img")
 
 @app.get("/practice1", response_class=HTMLResponse)
 async def jinja_practice1(request: Request):

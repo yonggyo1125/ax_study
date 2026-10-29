@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+        {% block title %}
+        {% endblock %}
+    </title>
+  </head>
+  <body>
+    {% include 'outlines/header.html' %}
+    <main>
+      {% block content %}
+
+      {% endblock %}
+    </main>
+    {% include 'outlines/footer.html' %}
+  </body>
+</html>
