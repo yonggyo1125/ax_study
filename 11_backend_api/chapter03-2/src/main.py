@@ -2,7 +2,7 @@ import os
 import logging
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
-from fastapi import FastAPI, Request, File, UploadFile
+from fastapi import FastAPI, Request, File, UploadFile, Form
 from fastapi.templating import Jinja2Templates
 
 logging.basicConfig(level=logging.INFO)
@@ -52,8 +52,11 @@ async def jinja_practice3(request: Request):
 
 
 @app.post("/practice3/process")
-async def jinja_practice3_process():
-    pass
+async def jinja_practice3_process(
+    title: str = Form(description="제목"),
+    content: str = Form(description="내용")
+):
+    logger.info(f"title={title}, content={content}")
 
 
 @app.get("/file", response_class=HTMLResponse)
@@ -64,5 +67,8 @@ async def file_upload(request: Request):
     )
 
 @app.post("/file")
-async def file_upload_process(file: UploadFile = File()):
-    logger.info(f"file={file}")
+async def file_upload_process():
+    pass
+
+# async def file_upload_process(file: UploadFile = File()):
+#     logger.info(f"file={file}")
