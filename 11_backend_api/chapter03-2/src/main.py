@@ -1,7 +1,7 @@
 import os
 import logging
 from fastapi.responses import HTMLResponse
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, Request, File, UploadFile
 from fastapi.templating import Jinja2Templates
 
 logging.basicConfig(level=logging.INFO)
@@ -28,3 +28,15 @@ async def jinja_practice1(request: Request):
         name="practice1.html",
         context=student_context
     )
+
+
+@app.get("/file", response_class=HTMLResponse)
+async def file_upload(request: Request):
+    return templates.TemplateResponse(
+        request=request,
+        name="file_test.html"
+    )
+
+@app.post("/file")
+async def file_upload_process(file: UploadFile = File()):
+    logger.info(f"file={file}")

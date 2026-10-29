@@ -1,0 +1,5 @@
+{% macro render_button(text, type) %}
+    <button type="{{ type | default('button', true) }}">
+        {{ text }}
+    </button>
+{% endmacro %}
