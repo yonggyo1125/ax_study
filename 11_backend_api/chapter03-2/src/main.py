@@ -29,6 +29,16 @@ async def jinja_practice1(request: Request):
         context=student_context
     )
 
+@app.get("/practice2", response_class=HTMLResponse)
+async def jinja_practice2(request: Request):
+    return templates.TemplateResponse(
+        request=request,
+        name="practice2.html"
+    )
+
+
+
+
 
 @app.get("/file", response_class=HTMLResponse)
 async def file_upload(request: Request):

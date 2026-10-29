@@ -36,5 +36,10 @@
     <hr>
     <p>닉네임: {{ nickname2 | default('익명') }}</p>
     <p>취미: {{ hobbies | join(',') }}</p>
+
+    <hr>
+    {% from 'common_macro.html' import render_button %}
+    {{ render_button("취소하기", "reset") }}
+    {{ render_button("등록하기", "submit") }}
   </body>
 </html>
