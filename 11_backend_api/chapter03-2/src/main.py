@@ -17,8 +17,8 @@ templates.env.add_extension("jinja2.ext.do")
 
 
 # 정적 경로 설정
-app.mount("/static", StaticFiles(directory=os.path.join(CURRENT_DIR, "static")), name="static")
-app.mount("/img", StaticFiles(CURRENT_DIR, "static/img"), name="img")
+app.mount("/static2", StaticFiles(directory=os.path.join(CURRENT_DIR, "static")), name="static")
+app.mount("/img", StaticFiles(directory=os.path.join(CURRENT_DIR, "static/img")), name="img")
 
 @app.get("/practice1", response_class=HTMLResponse)
 async def jinja_practice1(request: Request):
@@ -42,8 +42,18 @@ async def jinja_practice2(request: Request):
         name="practice2.html"
     )
 
+@app.get("/practice3", response_class=HTMLResponse)
+async def jinja_practice3(request: Request):
+    return templates.TemplateResponse(
+        request=request,
+        name="practice3.html"
+    )
 
 
+
+@app.post("/practice3/process")
+async def jinja_practice3_process():
+    pass
 
 
 @app.get("/file", response_class=HTMLResponse)

@@ -1,0 +1,9 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+<form method="post" action="/practice3/process">
+    제목: <input type="text" name="title"><br>
+    내용: <textarea name="content"></textarea><br>
+    <button type="submit">작성하기</button>
+</form>
+{% endblock %}
