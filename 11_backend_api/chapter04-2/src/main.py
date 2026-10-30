@@ -90,7 +90,7 @@ async def file_download(asset_id: int):
 
     headers = {
         "Content-Disposition": f'attachment; filename="{asset.filename}"',
-        "Content-Length": asset.file_size,
+        "Content-Length": str(asset.file_size),
         "Cache-Control": "no-cache"
 
     }
