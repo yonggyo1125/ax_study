@@ -2,6 +2,7 @@ import os
 import logging
 import aiofiles
 from pathlib import Path
+from fastapi.responses import StreamingResponse
 from fastapi import FastAPI, UploadFile, File, HTTPException, status
 from domain.archive import MultimediaAsset
 from schemas.archive import AssetResponseSchema
@@ -86,3 +87,16 @@ async def file_download(asset_id: int):
             status_code=status.HTTP_404_NOT_FOUND,
             detail="파일을 찾을 수 업습니다."
         )
+
+    headers = {
+        "Content-Disposition": f'attachment; filename="{asset.filename}"',
+        "Content-Length": asset.file_size,
+        "Cache-Control": "no-cache"
+
+    }
+
+    return StreamingResponse(
+        get_file_chunk(physical_target_path),
+        media_type=asset.content_type,
+        headers=headers
+    )
