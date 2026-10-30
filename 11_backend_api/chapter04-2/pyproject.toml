@@ -8,6 +8,7 @@ authors = [
 ]
 requires-python = ">=3.13"
 dependencies = [
+    "aiofiles>=25.1.0",
     "fastapi>=0.162.0",
     "pydantic>=2.14.2",
     "python-multipart>=0.0.32",
