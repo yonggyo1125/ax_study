@@ -1,6 +1,7 @@
 import os
 import logging
 import aiofiles
+from urllib.parse import quote
 from pathlib import Path
 from fastapi.responses import StreamingResponse
 from fastapi import FastAPI, UploadFile, File, HTTPException, status
@@ -88,8 +89,9 @@ async def file_download(asset_id: int):
             detail="파일을 찾을 수 업습니다."
         )
 
+    filename = quote(asset.filename)
     headers = {
-        "Content-Disposition": f'attachment; filename="{asset.filename}"',
+        "Content-Disposition": f"attachment; filename*=UTF-8''{filename}",
         "Content-Length": str(asset.file_size),
         "Cache-Control": "no-cache"
 
