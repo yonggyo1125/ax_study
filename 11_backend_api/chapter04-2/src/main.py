@@ -5,7 +5,7 @@ from pathlib import Path
 from fastapi import FastAPI, UploadFile, File, HTTPException, status
 from domain.archive import MultimediaAsset
 from schemas.archive import AssetResponseSchema
-from typing import Dict
+from typing import Dict, AsyncGenerator
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("app")
@@ -59,4 +59,30 @@ async def upload_asset(file: UploadFile = File(description="업로드 파일")):
             detail=f"파일 업로드 실패: {str(err)}"
         )
 
-    
+
+async def get_file_chunk(file_path: Path, chunk_size: int = 1024 * 1024) -> AsyncGenerator[bytes, None]:
+    async with aiofiles.open(file_path, "rb") as out_file:
+        while True:
+            chunk = await out_file.read(chunk_size)
+            if not chunk:
+                break
+
+            yield chunk
+
+
+@app.get("/assets/{asset_id}/download")
+async def file_download(asset_id: int):
+    asset = asset_repository.get(asset_id)
+    if not asset:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="파일을 찾을 수 업습니다."
+        )
+
+    physical_target_path = MEDIA_STORAGE_DIR / f"seq_{asset.id}_{asset.filename}"
+
+    if not physical_target_path.exists():
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="파일을 찾을 수 업습니다."
+        )
