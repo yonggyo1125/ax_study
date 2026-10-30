@@ -1,10 +1,11 @@
 import os
 import logging
 import aiofiles
+import asyncio
 from urllib.parse import quote
 from pathlib import Path
 from fastapi.responses import StreamingResponse
-from fastapi import FastAPI, UploadFile, File, HTTPException, status
+from fastapi import FastAPI, UploadFile, File, HTTPException, status, BackgroundTasks
 from domain.archive import MultimediaAsset
 from schemas.archive import AssetResponseSchema
 from typing import Dict, AsyncGenerator
@@ -89,7 +90,7 @@ async def file_download(asset_id: int):
             detail="파일을 찾을 수 업습니다."
         )
 
-    filename = quote(asset.filename)
+    filename = quote(asset.filename) # RFC 5987
     headers = {
         "Content-Disposition": f"attachment; filename*=UTF-8''{filename}",
         "Content-Length": str(asset.file_size),
@@ -102,3 +103,16 @@ async def file_download(asset_id: int):
         media_type=asset.content_type,
         headers=headers
     )
+
+
+async def send_email(email: str):
+    await asyncio.sleep(6)
+    logger.info("회원가입 안내 메일 전송 완료...")
+
+
+@app.get("/signup")
+async def signup_done(background_tasks: BackgroundTasks):
+
+    background_tasks.add_task(send_email, "test@test.org")
+
+    return {"message": "회원가입 완료 되었습니다."}
